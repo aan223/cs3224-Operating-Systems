@@ -250,10 +250,10 @@ void Render() {
     }
     state.player->Render(&program);
     if (state.player->victory) {
-        TextRendering(&program, fontTextureID, "WELL DONE", .3f, 0.15f, fontPos1);
+        TextRendering(&program, fontTextureID, "Mission SUccessful", .3f, 0.15f, fontPos1);
     }
     else if (state.player->failure) {
-        TextRendering(&program, fontTextureID, "FAILED LANDING", .3f, 0.15f, fontPos1);
+        TextRendering(&program, fontTextureID, "Mission Failed", .3f, 0.15f, fontPos1);
     }
 
     SDL_GL_SwapWindow(displayWindow);
