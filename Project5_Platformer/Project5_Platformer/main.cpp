@@ -13,7 +13,7 @@
 #include "glm/mat4x4.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include "ShaderProgram.h"
-#include <SDL_mixer.h>
+//#include <SDL_mixer.h>
 
 #include "Util.h"
 //#include "Entity.h"
@@ -30,7 +30,7 @@
 //#include "Home.h"
 #include "Level1.h"
 #include "Level2.h"
-//#include "Level3.h"
+#include "Level3.h"
 
 
 SDL_Window* displayWindow;
@@ -41,14 +41,14 @@ glm::mat4 viewMatrix, modelMatrix, modelMatrix2, projectionMatrix;
 
 // Add some variables and SwitchToScene function
 Scene *currentScene;
-Scene *sceneList[2];
+Scene *sceneList[3];
 
 void SwitchToScene(Scene *scene) {
     currentScene = scene;
     currentScene->Initialize();
 }
 
-Mix_Music *music;
+//Mix_Music *music;
 
 //GameState state;
 bool start = true;
@@ -57,8 +57,8 @@ float accumulator = 0.0f;
 float resetTimer = 0;
 float accelerationx = 0.25f;
 
-float edgeLeft = -4.55f;
-float edgeRight = 3.10f;
+float edgeLeft = 4.55f;
+float edgeRight = 10.10f;
 float edgeTop = 3.75f;
 float edgeBottom = -3.75f;
 
@@ -85,11 +85,11 @@ void Initialize() {
     program.Load("shaders/vertex_textured.glsl", "shaders/fragment_textured.glsl");
 
     //Start Audio
-    Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
+    //Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
 
-    music = Mix_LoadMUS("gamemusic.mp3");
-    Mix_PlayMusic(music, -1);
-    Mix_VolumeMusic(MIX_MAX_VOLUME/4);
+    //music = Mix_LoadMUS("gamemusic.mp3");
+    //Mix_PlayMusic(music, -1);
+    //Mix_VolumeMusic(MIX_MAX_VOLUME/4);
     
     viewMatrix = glm::mat4(1.0f);
     modelMatrix = glm::mat4(1.0f);
@@ -111,7 +111,7 @@ void Initialize() {
     //sceneList[0] = new Home();
     sceneList[0] = new Level1();
     sceneList[1] = new Level2();
-    //sceneList[3] = new Level3();
+    sceneList[2] = new Level3();
     SwitchToScene(sceneList[0]);
 }
 
@@ -204,7 +204,7 @@ void Update() {
         currentScene->state.player->Update(fixed_timestamp, currentScene->state.player, currentScene->state.enemies, ENEMY_COUNT, currentScene->state.map);
         
         for (int i = 0; i < ENEMY_COUNT; i++) {
-            currentScene->state.enemies[i].Update(fixed_timestamp, currentScene->state.player, currentScene->state.enemies, ENEMY_COUNT, currentScene->state.map);
+            currentScene->state.enemies[i].Update(fixed_timestamp, currentScene->state.player, currentScene->state.player, 1, currentScene->state.map);
         }
         /*
         if (state.player->position.x > edgeRight || state.player->position.x < edgeLeft) {
@@ -235,12 +235,6 @@ void Render() {
     glClear(GL_COLOR_BUFFER_BIT);
     
     program.SetViewMatrix(viewMatrix);
-
-    /*
-    for (int i = 0; i < PLATFORM_COUNT; i++) {
-        state.platform[i].Render(&program);
-    }
-    */
     
     currentScene->state.map->Render(&program);
     
@@ -273,10 +267,11 @@ int main(int argc, char* argv[]) {
     while (gameIsRunning) {
         ProcessInput();
         Update();
-        Render();
         
-        //COndition for switching to next scene
+        //Condition for switching to next scene
         if(currentScene->state.nextScene >= 0) SwitchToScene(sceneList[currentScene->state.nextScene]);
+        
+        Render();
         
     }
 

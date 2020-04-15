@@ -38,59 +38,56 @@ void Entity::Update(float deltaTime, Entity *player, Entity *objects, int object
         AI(player);
     }
     
-    //if (entityType == PLAYER || entityType == ENEMY) {
-    if (animIndices != NULL) {
-        if (glm::length(displacement) == 0) {
-            //idle = true;
+    if (entityType != objects->entityType) {
+        if (animIndices != NULL) {
+            if (glm::length(displacement) == 0) {
+                //idle = true;
+                animTime += deltaTime;
+            }
+            /*
+            else {
+                idle = false;
+            }
+             */
             animTime += deltaTime;
-        }
-        /*
-        else {
-            idle = false;
-        }
-         */
-        animTime += deltaTime;
 
-        if (animTime >= 0.25f) {
+            if (animTime >= 0.25f) {
 
-            animTime = 0.0f;
-            animIndex++;
+                animTime = 0.0f;
+                animIndex++;
 
-            if (animIndex >= animFrames) {
+                if (animIndex >= animFrames) {
+                    animIndex = 0;
+                }
+            }
+            else {
                 animIndex = 0;
             }
         }
-        else {
-            animIndex = 0;
-        }
-    }
-    
-    if(jump) {
-        jump = false;
         
-        velocity.y += jumpPower;
-    }
-
-    velocity.x = displacement.x * speed;
-    velocity += acceleration * deltaTime;
-/*
-    if(entityType == PLAYER) {
-        CheckCollisionsX(enemies,enemyCount);
-        CheckCollisionsY(enemies,enemyCount);
-    }
-*/
-    position.y += velocity.y * deltaTime; // Move on Y
-    CheckCollisionsY(map);
-    CheckCollisionsY(objects, objectCount); // Fix if needed
-
-    position.x += velocity.x * deltaTime; // Move on X
-    CheckCollisionsX(map);
-    CheckCollisionsX(objects, objectCount); // Fix if needed
+        if(jump) {
+            jump = false;
+            
+            velocity.y += jumpPower;
+        }
     
+        velocity.x = displacement.x * speed;
+        velocity += acceleration * deltaTime;
+
+        position.y += velocity.y * deltaTime; // Move on Y
+        CheckCollisionsY(map);
+        CheckCollisionsY(objects, objectCount); // Fix if needed
+
+        position.x += velocity.x * deltaTime; // Move on X
+        CheckCollisionsX(map);
+        CheckCollisionsX(objects, objectCount); // Fix if needed
+
+    }
     //Renders everything
     modelMatrix = glm::mat4(1.0f);
     
     modelMatrix = glm::translate(modelMatrix, position);
+
     
 }
 

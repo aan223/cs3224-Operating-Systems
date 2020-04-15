@@ -12,6 +12,7 @@
 		22599F4224456AF3003DCCFE /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22599F4024456AF3003DCCFE /* Scene.cpp */; };
 		22599F4524456C87003DCCFE /* Level1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22599F4324456C87003DCCFE /* Level1.cpp */; };
 		22599F4824456DA3003DCCFE /* Level2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22599F4624456DA3003DCCFE /* Level2.cpp */; };
+		225D99B62447A71B007CAA46 /* Level3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 225D99B42447A71B007CAA46 /* Level3.cpp */; };
 		22E9C2E824269E0000034082 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22E9C2E724269E0000034082 /* Entity.cpp */; };
 		22E9C2F824269E5E00034082 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22E9C2F724269E5E00034082 /* main.cpp */; };
 		22E9C2FC24269E7100034082 /* ShaderProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22E9C2FB24269E7000034082 /* ShaderProgram.cpp */; };
@@ -60,6 +61,8 @@
 		22599F4924472196003DCCFE /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
 		22599F4A24473797003DCCFE /* bounce.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bounce.wav; sourceTree = "<group>"; };
 		22599F4B244737BC003DCCFE /* gamemusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gamemusic.mp3; sourceTree = "<group>"; };
+		225D99B42447A71B007CAA46 /* Level3.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Level3.cpp; sourceTree = "<group>"; };
+		225D99B52447A71B007CAA46 /* Level3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Level3.h; sourceTree = "<group>"; };
 		22E9C2E724269E0000034082 /* Entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
 		22E9C2EA24269E0B00034082 /* font2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = font2.png; sourceTree = "<group>"; };
 		22E9C2EC24269E1A00034082 /* glm */ = {isa = PBXFileReference; lastKnownFileType = folder; path = glm; sourceTree = "<group>"; };
@@ -141,6 +144,8 @@
 				22599F4424456C87003DCCFE /* Level1.h */,
 				22599F4624456DA3003DCCFE /* Level2.cpp */,
 				22599F4724456DA3003DCCFE /* Level2.h */,
+				225D99B42447A71B007CAA46 /* Level3.cpp */,
+				225D99B52447A71B007CAA46 /* Level3.h */,
 			);
 			path = Project5_Platformer;
 			sourceTree = "<group>";
@@ -216,6 +221,7 @@
 				22599F4224456AF3003DCCFE /* Scene.cpp in Sources */,
 				22E9C2FC24269E7100034082 /* ShaderProgram.cpp in Sources */,
 				22E9C2E824269E0000034082 /* Entity.cpp in Sources */,
+				225D99B62447A71B007CAA46 /* Level3.cpp in Sources */,
 				22599F3C244558E0003DCCFE /* Map.cpp in Sources */,
 				22E9C2F824269E5E00034082 /* main.cpp in Sources */,
 				22599F4824456DA3003DCCFE /* Level2.cpp in Sources */,
