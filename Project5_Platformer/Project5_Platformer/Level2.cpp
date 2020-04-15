@@ -2,10 +2,10 @@
 //Project5_Platformer
 
 #include "Level2.h"
+#define LEVEL2_ENEMY_COUNT 3
+
 #define LEVEL2_WIDTH 14
 #define LEVEL2_HEIGHT 8
-
-#define LEVEL2_ENEMY_COUNT 3
 
 unsigned int level2_data[] =
 {

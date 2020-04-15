@@ -3,6 +3,7 @@
 
 #include "Level1.h"
 #define LEVEL1_ENEMY_COUNT 3
+
 #define LEVEL1_WIDTH 14
 #define LEVEL1_HEIGHT 8
 
@@ -12,9 +13,9 @@ unsigned int level1_data[] =
     3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1,
-    3, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2,
+    3, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    3, 0, 0, 1, 2, 1, 1, 0, 0, 1, 1, 1, 1, 1,
+    3, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 2,
     3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2
 };
 
@@ -91,6 +92,10 @@ void Level1::Initialize() {
 }
 void Level1::Update(float deltaTime) {
     state.player->Update(deltaTime, state.player, state.enemies, LEVEL1_ENEMY_COUNT, state.map);
+    
+    if(state.player->position.x >= 9) {
+        state.nextScene = 1;
+    }
 }
 void Level1::Render(ShaderProgram *program) {
     state.map->Render(program);

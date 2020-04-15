@@ -21,8 +21,6 @@
 		22E9C3052426A99D00034082 /* shaders in CopyFiles */ = {isa = PBXBuildFile; fileRef = 22E9C2FE24269F5C00034082 /* shaders */; };
 		22E9C3072426CB0200034082 /* george_0.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 22E9C3062426CAD300034082 /* george_0.png */; };
 		22E9C3092426CE3600034082 /* ctg.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 22E9C3082426CE2D00034082 /* ctg.png */; };
-		22E9C30B243052DF00034082 /* bounce.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 22E9C30A243052C800034082 /* bounce.wav */; };
-		22E9C30D2430538B00034082 /* gamemusic.mp3 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 22E9C30C2430538300034082 /* gamemusic.mp3 */; };
 		DBDF1B632323DEDA007CECB1 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBDF1B622323DEDA007CECB1 /* OpenGL.framework */; };
 		DBDF1B652323DEDF007CECB1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBDF1B642323DEDF007CECB1 /* Cocoa.framework */; };
 		DBDF1B692323DEEA007CECB1 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBDF1B662323DEEA007CECB1 /* SDL2.framework */; };
@@ -38,8 +36,6 @@
 			dstSubfolderSpec = 6;
 			files = (
 				22E9C3022426A97700034082 /* landing.png in CopyFiles */,
-				22E9C30D2430538B00034082 /* gamemusic.mp3 in CopyFiles */,
-				22E9C30B243052DF00034082 /* bounce.wav in CopyFiles */,
 				22E9C3072426CB0200034082 /* george_0.png in CopyFiles */,
 				22E9C3092426CE3600034082 /* ctg.png in CopyFiles */,
 				22E9C3052426A99D00034082 /* shaders in CopyFiles */,
@@ -62,6 +58,8 @@
 		22599F4624456DA3003DCCFE /* Level2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Level2.cpp; sourceTree = "<group>"; };
 		22599F4724456DA3003DCCFE /* Level2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Level2.h; sourceTree = "<group>"; };
 		22599F4924472196003DCCFE /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
+		22599F4A24473797003DCCFE /* bounce.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bounce.wav; sourceTree = "<group>"; };
+		22599F4B244737BC003DCCFE /* gamemusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gamemusic.mp3; sourceTree = "<group>"; };
 		22E9C2E724269E0000034082 /* Entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
 		22E9C2EA24269E0B00034082 /* font2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = font2.png; sourceTree = "<group>"; };
 		22E9C2EC24269E1A00034082 /* glm */ = {isa = PBXFileReference; lastKnownFileType = folder; path = glm; sourceTree = "<group>"; };
@@ -74,8 +72,6 @@
 		22E9C30024269F6900034082 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
 		22E9C3062426CAD300034082 /* george_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = george_0.png; sourceTree = "<group>"; };
 		22E9C3082426CE2D00034082 /* ctg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ctg.png; sourceTree = "<group>"; };
-		22E9C30A243052C800034082 /* bounce.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = bounce.wav; path = ../../../Downloads/bounce.wav; sourceTree = "<group>"; };
-		22E9C30C2430538300034082 /* gamemusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = gamemusic.mp3; path = ../../../Downloads/gamemusic.mp3; sourceTree = "<group>"; };
 		DBDF1B4F2323DE3F007CECB1 /* Project5_Platformer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Project5_Platformer; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBDF1B622323DEDA007CECB1 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		DBDF1B642323DEDF007CECB1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -122,9 +118,9 @@
 			children = (
 				22599F4924472196003DCCFE /* Entity.h */,
 				22E9C3082426CE2D00034082 /* ctg.png */,
-				22E9C30A243052C800034082 /* bounce.wav */,
+				22599F4A24473797003DCCFE /* bounce.wav */,
 				22E9C3062426CAD300034082 /* george_0.png */,
-				22E9C30C2430538300034082 /* gamemusic.mp3 */,
+				22599F4B244737BC003DCCFE /* gamemusic.mp3 */,
 				22E9C30024269F6900034082 /* stb_image.h */,
 				22E9C2FE24269F5C00034082 /* shaders */,
 				22E9C2FD24269F5400034082 /* ShaderProgram.h */,
