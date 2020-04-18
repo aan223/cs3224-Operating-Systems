@@ -62,6 +62,9 @@ float edgeRight = 10.10f;
 float edgeTop = 3.75f;
 float edgeBottom = -3.75f;
 
+//To keep track of life through levels
+int lifeUpdate = 3;
+
 GLuint fontTextureID;
 glm::vec3 fontPos3 = glm::vec3(3.0, -2.0f, 0);
 glm::vec3 fontPos4 = glm::vec3(1.0, -3.0f, 0);
@@ -111,7 +114,7 @@ void Initialize() {
     sceneList[1] = new Level1();
     sceneList[2] = new Level2();
     sceneList[3] = new Level3();
-    SwitchToScene(sceneList[0]);
+    SwitchToScene(sceneList[3]);
 }
 
 //Deciphering text/font
@@ -267,11 +270,14 @@ void Render() {
         TextRendering(&program, fontTextureID, "YOU WIN", .3f, 0.15f, fontPos1);
     }
     //Display losing text
-    if (currentScene->state.player->failure && currentScene->state.player->lives == 0) {
+    if (lifeUpdate == 0) {
         TextRendering(&program, fontTextureID, "GAME OVER", .3f, 0.15f, fontPos1);
     }
-    else if (currentScene->state.player->failure)
+    else if (currentScene->state.player->failure) {
+        //Update current life
+        lifeUpdate--;
         currentScene->state.player->position = glm::vec3(2.0f, -3.0f, 0);
+    }
     //restore failure
     currentScene->state.player->failure = false;
 
@@ -290,7 +296,7 @@ int main(int argc, char* argv[]) {
         Update();
         
         //Current life points to keep track of
-        currentScene->state.lifeUpdate = currentScene->state.player->lives;
+        currentScene->state.player->lives = lifeUpdate;
         
         //Condition for switching to next scene
         if (currentScene->state.player->victory and currentScene->state.nextScene != 4)

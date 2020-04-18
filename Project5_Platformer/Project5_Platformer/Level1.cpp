@@ -68,9 +68,6 @@ void Level1::Initialize() {
     
     state.player->victory = false;
     
-    //Update current life
-    //state.player->lives = state.lifeUpdate;
-    
     state.enemies = new Entity[LEVEL1_ENEMY_COUNT];
     GLuint enemyTextureID = Util::LoadTexture("ctg.png");
     
