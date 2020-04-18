@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2234A773244AAFD800C1DF7B /* Home.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2234A771244AAFD800C1DF7B /* Home.cpp */; };
+		2234A778244B934D00C1DF7B /* bounce.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 22599F4A24473797003DCCFE /* bounce.wav */; };
+		2234A779244B934F00C1DF7B /* gamemusic.mp3 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 22599F4B244737BC003DCCFE /* gamemusic.mp3 */; };
 		22599F3C244558E0003DCCFE /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22599F3A244558E0003DCCFE /* Map.cpp */; };
 		22599F3F244566F7003DCCFE /* Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22599F3D244566F7003DCCFE /* Util.cpp */; };
 		22599F4224456AF3003DCCFE /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22599F4024456AF3003DCCFE /* Scene.cpp */; };
@@ -39,7 +41,9 @@
 			files = (
 				22E9C3022426A97700034082 /* landing.png in CopyFiles */,
 				22E9C3072426CB0200034082 /* george_0.png in CopyFiles */,
+				2234A778244B934D00C1DF7B /* bounce.wav in CopyFiles */,
 				22E9C3092426CE3600034082 /* ctg.png in CopyFiles */,
+				2234A779244B934F00C1DF7B /* gamemusic.mp3 in CopyFiles */,
 				22E9C3052426A99D00034082 /* shaders in CopyFiles */,
 				22E9C3042426A97E00034082 /* font2.png in CopyFiles */,
 				22E9C3032426A97B00034082 /* ground.png in CopyFiles */,
