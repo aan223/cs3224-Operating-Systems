@@ -169,7 +169,7 @@ void ProcessInput() {
                             currentScene->state.player->jump = true;
                         }
                     case SDLK_RETURN:
-                        if(currentScene->state.nextScene == 1) { //Hit space to start
+                        if(currentScene->state.nextScene == 1) { //Hit Shift/Enter to start
                             SwitchToScene(sceneList[currentScene->state.nextScene]);
                         }
                 }
