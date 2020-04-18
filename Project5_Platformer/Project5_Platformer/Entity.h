@@ -45,6 +45,7 @@ class Entity {
     
     bool failure = false;
     bool victory = false;
+    int lives = 3;
     
     int *animIdle = NULL;
     int *animRight = NULL;

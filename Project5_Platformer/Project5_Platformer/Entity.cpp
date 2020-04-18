@@ -161,21 +161,27 @@ void Entity::CheckCollisionsX(Entity *objects, int objectCount) {
                 collidedLeft = true;
                 object->collidedRight = true;
                 if (entityType == PLAYER && object->entityType == ENEMY) {
+                    lives--;
                     failure = true;
-                    isActive = false;
+                    if(lives == 0) {
+                        isActive = false;
+                    }
                 }
                 //else if (entityType == PLAYER && object->entityType == ENEMY) {
                 //    failure = true;
                 //}
             }
             
-            else if (velocity.x > 0) {//CHecking right collision
+            else if (velocity.x >= 0) {//CHecking right collision
                 velocity.x = 0;
                 collidedRight = true;
                 object->collidedLeft = true;
                 if (entityType == PLAYER && object->entityType == ENEMY ){
+                    lives--;
                     failure = true;
-                    isActive = false;
+                    if(lives == 0) {
+                        isActive = false;
+                    }
                 }
                 //else if (entityType == PLAYER && object->entityType == ENEMY) {
                 //    failure = true;
@@ -201,13 +207,20 @@ void Entity::CheckCollisionsY(Entity *objects, int objectCount) {
                 penetrationY = temp;
             }
             
-            if (velocity.y < 0) {
+            if (velocity.y <= 0) {
                 collidedBottom = true;
                 object->collidedTop = true;
                 if (entityType == PLAYER && object->entityType == ENEMY) {
                     if(position.y >= object->position.y) {
                         object->isActive = false;
                         Mix_PlayChannel(-1, bounce, 0);
+                    }
+                    else {
+                        lives--;
+                        failure = true;
+                        if(lives == 0) {
+                            isActive = false;
+                        }
                     }
                 }
                 /*
@@ -228,8 +241,11 @@ void Entity::CheckCollisionsY(Entity *objects, int objectCount) {
                         Mix_PlayChannel(-1, bounce, 0);
                     }
                     else {
+                        lives--;
                         failure = true;
-                        isActive = false;
+                        if(lives == 0) {
+                            isActive = false;
+                        }
                     }
                 }
             }

@@ -3,9 +3,9 @@
 
 #include "Level1.h"
 
-#include <SDL_mixer.h>
+//#include <SDL_mixer.h>
 
-Mix_Music *music;
+//Mix_Music *music;
 
 #define LEVEL1_ENEMY_COUNT 3
 
@@ -14,34 +14,35 @@ Mix_Music *music;
 
 unsigned int level1_data[] =
 {
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
-    3, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1,
-    3, 1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2,
-    3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2
+    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,
+    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 3,
+    3, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 3,
+    3, 1, 1, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 3,
+    3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3,
 };
 
 void Level1::Initialize() {
-    state.nextScene = -1;
+    //to switch to next scene
+    state.nextScene = 2;
     
     GLuint mapTextureID = Util::LoadTexture("landing.png");
     state.map = new Map(LEVEL1_WIDTH, LEVEL1_HEIGHT, level1_data, mapTextureID, 1.0f, 4, 1);
     // Move over all of the player and enemy code from initialization.
     
     //Start Audio
-    Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
+    //Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
     
-    music = Mix_LoadMUS("gamemusic.mp3");
-    Mix_PlayMusic(music, -1);
-    Mix_VolumeMusic(MIX_MAX_VOLUME/4);
+    //music = Mix_LoadMUS("gamemusic.mp3");
+    //Mix_PlayMusic(music, -1);
+    //Mix_VolumeMusic(MIX_MAX_VOLUME/4);
     
     state.player = new Entity();
     state.player->entityType = PLAYER;
     
-    state.player->position = glm::vec3(5.0f, 0.0f, 0);
+    state.player->position = glm::vec3(3.0f, 0.0f, 0);
     state.player->displacement = glm::vec3(0);
     state.player->acceleration = glm::vec3(0, -3.20f, 0);
     state.player->speed = 1.5f;
@@ -64,6 +65,11 @@ void Level1::Initialize() {
     state.player->animTime = 0;
     state.player->animCols = 4;
     state.player->animRows = 4;
+    
+    state.player->victory = false;
+    
+    //Update current life
+    //state.player->lives = state.lifeUpdate;
     
     state.enemies = new Entity[LEVEL1_ENEMY_COUNT];
     GLuint enemyTextureID = Util::LoadTexture("ctg.png");
@@ -97,10 +103,11 @@ void Level1::Update(float deltaTime) {
     for (int i = 0; i < LEVEL1_ENEMY_COUNT; i++) {
         state.enemies[i].Update(deltaTime, state.player, state.player, 1, state.map);
     }
-    
-    if(state.player->position.x >= 12) {
-        state.nextScene = 1;
-    }
+    //move to next level
+    //if(state.player->position.x >= 12) {
+    //if(state.player->victory) {
+    //    state.nextScene = 1;
+    //}
 }
 void Level1::Render(ShaderProgram *program) {
     state.map->Render(program);

@@ -9,18 +9,19 @@
 
 unsigned int level3_data[] =
 {
-    3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
-    3, 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 0, 0, 0,
-    3, 0, 0, 0, 0, 0, 0, 1, 2, 2, 0, 0, 0, 0,
-    3, 0, 0, 0, 0, 0, 1, 2, 2, 2, 0, 0, 0, 0,
-    3, 0, 0, 0, 0, 1, 2, 2, 2, 2, 0, 0, 0, 0,
-    3, 0, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1,
+    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    3, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0,
+    3, 0, 0, 0, 0, 0, 0, 1, 1, 2, 2, 0, 0, 0,
+    3, 0, 0, 0, 0, 1, 1, 2, 2, 2, 2, 1, 0, 0,
+    3, 0, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1,
     3, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
     3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2
 };
 
 void Level3::Initialize() {
-    state.nextScene = -1;
+    state.nextScene = 4;
+    //Update current life
     
     GLuint mapTextureID = Util::LoadTexture("ground.png");
     state.map = new Map(LEVEL3_WIDTH, LEVEL3_HEIGHT, level3_data, mapTextureID, 1.0f, 4, 1);
@@ -53,6 +54,11 @@ void Level3::Initialize() {
     state.player->animCols = 4;
     state.player->animRows = 4;
     
+    state.player->victory = false;
+    
+    //Update current life
+    //state.player->lives = state.lifeUpdate;
+    
     state.enemies = new Entity[LEVEL3_ENEMY_COUNT];
     GLuint enemyTextureID = Util::LoadTexture("ctg.png");
     
@@ -61,17 +67,23 @@ void Level3::Initialize() {
         state.enemies[i].textureID = enemyTextureID;
         state.enemies[i].width = 0.70f;
         state.enemies[i].height = 1.0f;
-        state.enemies[0].speed = 1;
-        state.enemies[2].position = glm::vec3(4.0f+i, -.75f+i, 0);
-        state.enemies[2].acceleration = glm::vec3(0, -1.75f, 0);
-        state.enemies[2].aiType = JUMPER;
+        state.enemies[i].speed = 1;
+        state.enemies[i].position = glm::vec3(4.0f+i*2, -.75f+i, 0);
+        state.enemies[i].acceleration = glm::vec3(0, -1.75f, 0);
+        state.enemies[i].aiType = JUMPER;
         //state.enemies[2].aiState = JUMPING;
-        state.enemies[2].jumpPower = 2.5f;
+        state.enemies[i].jumpPower = 2.5f;
     }
     
 }
 void Level3::Update(float deltaTime) {
     state.player->Update(deltaTime, state.player, state.enemies, LEVEL3_ENEMY_COUNT, state.map);
+    
+    //move to next level
+    //if(state.player->position.x >= 12) {
+    //if(state.player->victory) {
+        //state.nextScene = 1;
+    //}
 }
 void Level3::Render(ShaderProgram *program) {
     state.map->Render(program);

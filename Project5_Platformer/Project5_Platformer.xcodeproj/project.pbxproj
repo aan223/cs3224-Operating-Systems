@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2234A773244AAFD800C1DF7B /* Home.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2234A771244AAFD800C1DF7B /* Home.cpp */; };
 		22599F3C244558E0003DCCFE /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22599F3A244558E0003DCCFE /* Map.cpp */; };
 		22599F3F244566F7003DCCFE /* Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22599F3D244566F7003DCCFE /* Util.cpp */; };
 		22599F4224456AF3003DCCFE /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22599F4024456AF3003DCCFE /* Scene.cpp */; };
@@ -48,6 +49,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2234A771244AAFD800C1DF7B /* Home.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Home.cpp; sourceTree = "<group>"; };
+		2234A772244AAFD800C1DF7B /* Home.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Home.h; sourceTree = "<group>"; };
 		22599F3A244558E0003DCCFE /* Map.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
 		22599F3B244558E0003DCCFE /* Map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
 		22599F3D244566F7003DCCFE /* Util.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Util.cpp; sourceTree = "<group>"; };
@@ -146,6 +149,8 @@
 				22599F4724456DA3003DCCFE /* Level2.h */,
 				225D99B42447A71B007CAA46 /* Level3.cpp */,
 				225D99B52447A71B007CAA46 /* Level3.h */,
+				2234A771244AAFD800C1DF7B /* Home.cpp */,
+				2234A772244AAFD800C1DF7B /* Home.h */,
 			);
 			path = Project5_Platformer;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 				22E9C2FC24269E7100034082 /* ShaderProgram.cpp in Sources */,
 				22E9C2E824269E0000034082 /* Entity.cpp in Sources */,
 				225D99B62447A71B007CAA46 /* Level3.cpp in Sources */,
+				2234A773244AAFD800C1DF7B /* Home.cpp in Sources */,
 				22599F3C244558E0003DCCFE /* Map.cpp in Sources */,
 				22E9C2F824269E5E00034082 /* main.cpp in Sources */,
 				22599F4824456DA3003DCCFE /* Level2.cpp in Sources */,

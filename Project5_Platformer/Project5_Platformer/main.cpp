@@ -13,7 +13,7 @@
 #include "glm/mat4x4.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include "ShaderProgram.h"
-//#include <SDL_mixer.h>
+#include <SDL_mixer.h>
 
 #include "Util.h"
 //#include "Entity.h"
@@ -27,7 +27,7 @@
 
 // Add headers
 #include "Scene.h"
-//#include "Home.h"
+#include "Home.h"
 #include "Level1.h"
 #include "Level2.h"
 #include "Level3.h"
@@ -41,14 +41,14 @@ glm::mat4 viewMatrix, modelMatrix, modelMatrix2, projectionMatrix;
 
 // Add some variables and SwitchToScene function
 Scene *currentScene;
-Scene *sceneList[3];
+Scene *sceneList[4];
 
 void SwitchToScene(Scene *scene) {
     currentScene = scene;
     currentScene->Initialize();
 }
 
-//Mix_Music *music;
+Mix_Music *music;
 
 //GameState state;
 bool start = true;
@@ -57,22 +57,21 @@ float accumulator = 0.0f;
 float resetTimer = 0;
 float accelerationx = 0.25f;
 
-float edgeLeft = 4.55f;
+float edgeLeft = 3.55f;
 float edgeRight = 10.10f;
 float edgeTop = 3.75f;
 float edgeBottom = -3.75f;
 
 GLuint fontTextureID;
-glm::vec3 fontPos1 = glm::vec3(-1.45f, 1.75f, 0);
-glm::vec3 fontPos2 = glm::vec3(-3.20f,0,0);
-glm::vec3 fontPos3 = glm::vec3(-2.70f, 1.5f, 0);
+glm::vec3 fontPos3 = glm::vec3(3.0, -2.0f, 0);
+glm::vec3 fontPos4 = glm::vec3(1.0, -3.0f, 0);
 
 //std::vector<Entity> collisionCheck;
 //std::vector<Entity> fill;
 
 void Initialize() {
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
-    displayWindow = SDL_CreateWindow("Rise of the AI", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_OPENGL);
+    displayWindow = SDL_CreateWindow("Platformer", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_OPENGL);
     SDL_GLContext context = SDL_GL_CreateContext(displayWindow);
     SDL_GL_MakeCurrent(displayWindow, context);
 
@@ -85,11 +84,11 @@ void Initialize() {
     program.Load("shaders/vertex_textured.glsl", "shaders/fragment_textured.glsl");
 
     //Start Audio
-    //Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
+    Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
 
-    //music = Mix_LoadMUS("gamemusic.mp3");
-    //Mix_PlayMusic(music, -1);
-    //Mix_VolumeMusic(MIX_MAX_VOLUME/4);
+    music = Mix_LoadMUS("gamemusic.mp3");
+    Mix_PlayMusic(music, -1);
+    Mix_VolumeMusic(MIX_MAX_VOLUME/4);
     
     viewMatrix = glm::mat4(1.0f);
     modelMatrix = glm::mat4(1.0f);
@@ -108,10 +107,10 @@ void Initialize() {
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
-    //sceneList[0] = new Home();
-    sceneList[0] = new Level1();
-    sceneList[1] = new Level2();
-    sceneList[2] = new Level3();
+    sceneList[0] = new Home();
+    sceneList[1] = new Level1();
+    sceneList[2] = new Level2();
+    sceneList[3] = new Level3();
     SwitchToScene(sceneList[0]);
 }
 
@@ -165,6 +164,10 @@ void ProcessInput() {
                     case SDLK_SPACE:
                         if(currentScene->state.player->collidedBottom) {
                             currentScene->state.player->jump = true;
+                        }
+                    case SDLK_RETURN:
+                        if(currentScene->state.nextScene == 1) { //Hit space to start
+                            SwitchToScene(sceneList[currentScene->state.nextScene]);
                         }
                 }
         }
@@ -234,6 +237,11 @@ void Update() {
 void Render() {
     glClear(GL_COLOR_BUFFER_BIT);
     
+    //Text positioning
+    glm::vec3 fontPos1 = glm::vec3(currentScene->state.player->position.x, currentScene->state.player->position.y, 0);
+    //DIsplay life count
+    glm::vec3 fontPos2 = glm::vec3(currentScene->state.player->position.x - 4, -0.5, 0);
+    
     program.SetViewMatrix(viewMatrix);
     
     currentScene->state.map->Render(&program);
@@ -246,13 +254,26 @@ void Render() {
         if(currentScene->state.enemies[i].isActive) currentScene->state.player->victory = false;
         currentScene->state.enemies[i].Render(&program);
     }
+    //Display on Home Page
+    if(currentScene->state.nextScene == 1) {
+        TextRendering(&program, fontTextureID, "Platformer", .3f, 0.15f, fontPos3);
+        TextRendering(&program, fontTextureID, "Hit Enter to Begin", .3f, 0.15f, fontPos4);
+    }
     
-    if (currentScene->state.player->victory) {
+    TextRendering(&program, fontTextureID, "LIVES: "+ std::to_string(currentScene->state.player->lives), .3f, 0.15f, fontPos2);
+    
+    //Display winning text
+    if (currentScene->state.player->victory and currentScene->state.nextScene == 4) {
         TextRendering(&program, fontTextureID, "YOU WIN", .3f, 0.15f, fontPos1);
     }
-    else if (currentScene->state.player->failure) {
+    //Display losing text
+    if (currentScene->state.player->failure && currentScene->state.player->lives == 0) {
         TextRendering(&program, fontTextureID, "GAME OVER", .3f, 0.15f, fontPos1);
     }
+    else if (currentScene->state.player->failure)
+        currentScene->state.player->position = glm::vec3(2.0f, -3.0f, 0);
+    //restore failure
+    currentScene->state.player->failure = false;
 
     SDL_GL_SwapWindow(displayWindow);
 }
@@ -263,13 +284,17 @@ void Shutdown() {
 
 int main(int argc, char* argv[]) {
     Initialize();
-
+    
     while (gameIsRunning) {
         ProcessInput();
         Update();
         
+        //Current life points to keep track of
+        currentScene->state.lifeUpdate = currentScene->state.player->lives;
+        
         //Condition for switching to next scene
-        if(currentScene->state.nextScene >= 0) SwitchToScene(sceneList[currentScene->state.nextScene]);
+        if (currentScene->state.player->victory and currentScene->state.nextScene != 4)
+        SwitchToScene(sceneList[currentScene->state.nextScene]);
         
         Render();
         
