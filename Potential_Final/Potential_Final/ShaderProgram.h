@@ -22,6 +22,8 @@ class ShaderProgram {
         void SetViewMatrix(const glm::mat4 &matrix);
 	
 		void SetColor(float r, float g, float b, float a);
+		void SetLightPosition(glm::vec3 position);
+
 	
         GLuint LoadShaderFromString(const std::string &shaderContents, GLenum type);
         GLuint LoadShaderFromFile(const std::string &shaderFile, GLenum type);
@@ -32,7 +34,8 @@ class ShaderProgram {
         GLuint modelMatrixUniform;
         GLuint viewMatrixUniform;
 		GLuint colorUniform;
-	
+		GLuint lightPositionUniform;
+
         GLuint positionAttribute;
         GLuint texCoordAttribute;
     

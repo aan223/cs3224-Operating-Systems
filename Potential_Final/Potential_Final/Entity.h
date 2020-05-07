@@ -16,6 +16,8 @@
 
 enum EntityType { PLAYER, PROJECTILE, PLATFORM, ENEMY, BACKGROUND, PROP, LIVES };
 enum EnemyType { NONE, SLEEPER, JUMPER, STALKER, WALKER, BOSS };
+enum LastDir{UP,RIGHT,DOWN,LEFT};
+enum ProjectileType {READY, FIRED};
 
 class Entity {
 	public:  
@@ -38,7 +40,7 @@ class Entity {
 		float height = 1;
 
 		float timer = 0; //for keeping track of time for things such as resets and load times
-
+		
 		bool idle = true;
 		bool goLeft = false;
 		bool goUp = false;
@@ -46,6 +48,7 @@ class Entity {
 		bool player = false;
 		bool airborne = false;
 		bool recover = false;
+		LastDir lastdir = DOWN;
 
 		//for enemy to player collision
 		bool collidedTop = false;
@@ -62,6 +65,8 @@ class Entity {
 		bool colBotRight=false;
 		bool colLeft = false;
 		bool colRight = false;
+		bool horz = true;
+		bool inFirstRoom = false;
 
 		//states for fail and success
 		bool fail = false;
@@ -71,16 +76,18 @@ class Entity {
 		int hp = 3;
 		bool chase = false;
 		bool shoot = false;
-
+		bool killable = false;
+		bool spawnable = false;
 
 		//Type of Entity (determines how we update it and such)
 		EntityType entityType;
 		EnemyType enemyType = NONE;
+		ProjectileType projectileType;
 
 		glm::vec3 position;   
 		glm::vec3 movement;
 		glm::vec3 velocity;
-		glm::vec3 acceleration;
+		//glm::vec3 acceleration;
 		float speed = 0;      
 		
 		GLuint textureID; 
@@ -106,7 +113,7 @@ class Entity {
 		void Render(ShaderProgram *program);
 		void AI(Entity* player);
 		void AIWalker();
-    void AISleeper();
+		void AISleeper();
 		void AIBoss(Entity* player);
 		void AIStalker(Entity* player);
 

@@ -41,6 +41,11 @@
 		223C15342460AAC70018D695 /* Game Over LoZ.mp3 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 223C14EB2460A9780018D695 /* Game Over LoZ.mp3 */; };
 		223C15352460AAD20018D695 /* shaders in CopyFiles */ = {isa = PBXBuildFile; fileRef = 223C150B2460AA1D0018D695 /* shaders */; };
 		223C15372460AB4F0018D695 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 223C15362460AB4F0018D695 /* Map.cpp */; };
+		22687C7324636E4700AC1203 /* Level4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22687C7224636E4600AC1203 /* Level4.cpp */; };
+		22687C7624636E5600AC1203 /* Level5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22687C7524636E5600AC1203 /* Level5.cpp */; };
+		22687C7A24636E7E00AC1203 /* Space Slimes.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 22687C7924636E7000AC1203 /* Space Slimes.png */; };
+		22687C7B24636E8000AC1203 /* Space Slimes Background.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 22687C7824636E6900AC1203 /* Space Slimes Background.png */; };
+		22687C7F2464CAF200AC1203 /* Space Slime Boss.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 22687C7E2464CAE900AC1203 /* Space Slime Boss.png */; };
 		DBDF1B632323DEDA007CECB1 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBDF1B622323DEDA007CECB1 /* OpenGL.framework */; };
 		DBDF1B652323DEDF007CECB1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBDF1B642323DEDF007CECB1 /* Cocoa.framework */; };
 		DBDF1B692323DEEA007CECB1 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBDF1B662323DEEA007CECB1 /* SDL2.framework */; };
@@ -56,13 +61,16 @@
 			dstSubfolderSpec = 6;
 			files = (
 				223C151F2460AA9E0018D695 /* Victory Kirby.mp3 in CopyFiles */,
+				22687C7B24636E8000AC1203 /* Space Slimes Background.png in CopyFiles */,
 				223C15212460AAA20018D695 /* Space Slime Player Sprite Sheet.png in CopyFiles */,
+				22687C7F2464CAF200AC1203 /* Space Slime Boss.png in CopyFiles */,
+				22687C7A24636E7E00AC1203 /* Space Slimes.png in CopyFiles */,
 				223C15232460AAA50018D695 /* smb3_stomp.wav in CopyFiles */,
 				223C15342460AAC70018D695 /* Game Over LoZ.mp3 in CopyFiles */,
+				223C15322460AAC20018D695 /* Night Background.png in CopyFiles */,
 				223C15252460AAA80018D695 /* smb3_enter_level.wav in CopyFiles */,
 				223C15312460AAC10018D695 /* Penguin Boss.png in CopyFiles */,
 				223C15332460AAC50018D695 /* Grass block.png in CopyFiles */,
-				223C15322460AAC20018D695 /* Night Background.png in CopyFiles */,
 				223C152A2460AAB60018D695 /* Polar Bear Pixel.png in CopyFiles */,
 				223C152F2460AABE0018D695 /* pixel heart.png in CopyFiles */,
 				223C152D2460AABB0018D695 /* Pixel Sign.png in CopyFiles */,
@@ -129,6 +137,13 @@
 		223C151C2460AA880018D695 /* Victory Kirby.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "Victory Kirby.mp3"; path = "Potential_Final/Victory Kirby.mp3"; sourceTree = SOURCE_ROOT; };
 		223C151D2460AA8E0018D695 /* Winter Blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Winter Blocks.png"; path = "Potential_Final/Winter Blocks.png"; sourceTree = SOURCE_ROOT; };
 		223C15362460AB4F0018D695 /* Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Map.cpp; path = Potential_Final/Map.cpp; sourceTree = SOURCE_ROOT; };
+		22687C7224636E4600AC1203 /* Level4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Level4.cpp; path = Potential_Final/Level4.cpp; sourceTree = SOURCE_ROOT; };
+		22687C7424636E5000AC1203 /* Level4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Level4.h; path = Potential_Final/Level4.h; sourceTree = SOURCE_ROOT; };
+		22687C7524636E5600AC1203 /* Level5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Level5.cpp; path = Potential_Final/Level5.cpp; sourceTree = SOURCE_ROOT; };
+		22687C7724636E5C00AC1203 /* Level5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Level5.h; path = Potential_Final/Level5.h; sourceTree = SOURCE_ROOT; };
+		22687C7824636E6900AC1203 /* Space Slimes Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Space Slimes Background.png"; path = "Potential_Final/Space Slimes Background.png"; sourceTree = SOURCE_ROOT; };
+		22687C7924636E7000AC1203 /* Space Slimes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Space Slimes.png"; path = "Potential_Final/Space Slimes.png"; sourceTree = SOURCE_ROOT; };
+		22687C7E2464CAE900AC1203 /* Space Slime Boss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Space Slime Boss.png"; path = "Potential_Final/Space Slime Boss.png"; sourceTree = SOURCE_ROOT; };
 		DBDF1B4F2323DE3F007CECB1 /* Potential_Final */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Potential_Final; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBDF1B622323DEDA007CECB1 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		DBDF1B642323DEDF007CECB1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -173,6 +188,13 @@
 		DBDF1B512323DE3F007CECB1 /* Potential_FInal */ = {
 			isa = PBXGroup;
 			children = (
+				22687C7E2464CAE900AC1203 /* Space Slime Boss.png */,
+				22687C7924636E7000AC1203 /* Space Slimes.png */,
+				22687C7824636E6900AC1203 /* Space Slimes Background.png */,
+				22687C7724636E5C00AC1203 /* Level5.h */,
+				22687C7524636E5600AC1203 /* Level5.cpp */,
+				22687C7424636E5000AC1203 /* Level4.h */,
+				22687C7224636E4600AC1203 /* Level4.cpp */,
 				223C15362460AB4F0018D695 /* Map.cpp */,
 				223C151D2460AA8E0018D695 /* Winter Blocks.png */,
 				223C151C2460AA880018D695 /* Victory Kirby.mp3 */,
@@ -289,9 +311,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22687C7324636E4700AC1203 /* Level4.cpp in Sources */,
 				223C15092460AA0F0018D695 /* ShaderProgram.cpp in Sources */,
 				223C15062460AA020018D695 /* Scene.cpp in Sources */,
 				223C14E92460A9600018D695 /* Entity.cpp in Sources */,
+				22687C7624636E5600AC1203 /* Level5.cpp in Sources */,
 				223C14F42460A9A20018D695 /* Level2.cpp in Sources */,
 				223C14EF2460A9900018D695 /* Level 3.cpp in Sources */,
 				223C14F82460A9B50018D695 /* main.cpp in Sources */,

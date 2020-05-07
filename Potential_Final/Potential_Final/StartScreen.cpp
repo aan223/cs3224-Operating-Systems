@@ -1,3 +1,4 @@
+#pragma once
 #include "StartScreen.h"
 #define START_WIDTH 15 
 #define START_HEIGHT 8
@@ -8,21 +9,21 @@
 //All we need here really is the background and text
 
 unsigned int startScreen_data[] = {
-	3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0,
-	3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0,
-	3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0,
-	3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0,
-	3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0,
-	3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0,
-	3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0,
-	3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0
+	11, 10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 3, 3, 0, 0,
+	10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 10, 0, 0, 0, 0,
+	11, 10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 0, 0, 0, 0,
+	10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 10, 0, 0, 0, 0,
+	11, 10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 0, 0, 0, 0,
+	10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 10, 0, 0, 0, 0,
+	11, 10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 0, 0, 0, 0,
+	10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 11, 11, 11
 };
 
 void StartScreen::Initialize() {
 	//set background
 
 	state.background = new Entity();
-	state.background->textureID = Util::LoadTexture("Sky.png");
+	state.background->textureID = Util::LoadTexture("Night Background.png");
 	state.background->entityType = BACKGROUND;
 	state.background->Update(0, state.player, state.enemies, 0, state.map);
 
@@ -49,8 +50,8 @@ void StartScreen::Initialize() {
 	state.player->animRows = 3;
 	state.player->isActive = false;
 	
-	GLuint mapTextureID = Util::LoadTexture("Winter Blocks.png");
-	state.map = new Map(START_WIDTH, START_HEIGHT, startScreen_data, mapTextureID, 1.0f, 4, 1);
+	GLuint mapTextureID = Util::LoadTexture("Space Slimes Background.png");
+	state.map = new Map(START_WIDTH, START_HEIGHT, startScreen_data, mapTextureID, 1.0f, 3, 4);
 	state.nextScene = -1;
 }
 void StartScreen::Update(float deltaTime) {
@@ -58,11 +59,11 @@ void StartScreen::Update(float deltaTime) {
 }
 void StartScreen::Render(ShaderProgram *program) {
 	glm::vec3 fontPos2 = glm::vec3(2.0f, -3.0f, 0);
-	glm::vec3 fontPos3 = glm::vec3(1.0f, -2.0f, 0);
+	glm::vec3 fontPos3 = glm::vec3(3.0f, -2.0f, 0);
 	GLuint fontTextureID = Util::LoadTexture("pixel_font.png");
-	state.background->Render(program);
-	Util::DrawText(program, fontTextureID, "Polar Bear Adventures", .3f, 0.1f, fontPos3);
-	Util::DrawText(program, fontTextureID, "Press Space To Start!", .2f, 0.1f, fontPos2);
+	//state.background->Render(program);
 	state.map->Render(program);
+	Util::DrawText(program, fontTextureID, "Space Slimes", .3f, 0.1f, fontPos3);
+	Util::DrawText(program, fontTextureID, "Press Space To Start!", .2f, 0.1f, fontPos2);
 	
 }
